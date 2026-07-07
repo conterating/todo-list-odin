@@ -9,9 +9,16 @@
     <div class="content">
       <div class="sidebar">
         <h2 class="sidebar-el">Projects</h2>
-        <button class="sidebar-el sidebar-button">My First Project</button>
         <div class="projects"></div>
         <button class="sidebar-button">Add Project +</button>
+        <dialog class="project-dialog">
+          <form method="dialog">
+            <label for="project-name">Project Name: </label>
+            <input type="text" name="project-title" id="project-title" />
+            <button class="close-project">Close</button>
+            <button class="submit-project">Add Project</button>
+          </form>
+        </dialog>
       </div>
       <div class="main-todos">
         <div class="top-row">
@@ -35,7 +42,13 @@
                 </div>
                 <div class="task-priority">
                   <label for="priority">Priority: </label>
-                  <input type="radio" name="priotity" id="low" value="low" />
+                  <input
+                    type="radio"
+                    name="priotity"
+                    id="low"
+                    value="low"
+                    checked
+                  />
                   <label for="low">Low</label>
                   <input
                     type="radio"
@@ -44,11 +57,11 @@
                     value="medium"
                   />
                   <label for="medium">Medium</label>
-                  <input type="radio" name="proproty" id="high" value="high" />
+                  <input type="radio" name="priority" id="high" value="high" />
                   <label for="high">High</label>
                 </div>
-                <button class="close-modal">Close</button>
-                <button class="submit-modal">Add Task</button>
+                <button type="button" class="close-modal">Close</button>
+                <button type="submit" class="submit-modal">Add Task</button>
               </div>
             </form>
           </dialog>

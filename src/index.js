@@ -1,22 +1,6 @@
 import "./styles.css";
+import Todo from "./todo.js";
+import Project from "./project.js";
+import eventListeners from "./eventlisteners.js";
 
-const taskDiv = document.querySelector(".tasks");
-const taskAddButton = document.querySelector(".add-button");
-const taskDialog = document.querySelector(".task-dialog");
-const closeButton = document.querySelector("close-modal");
-
-function addTaskScreen(task) {
-  const taskButton = document.createElement("button");
-  taskButton.textContent = task.title;
-}
-
-function showTaskModal() {
-  taskDialog.showModal();
-}
-
-function closeModal() {
-  taskDialog.close();
-}
-
-taskAddButton.addEventListener("click", showTaskModal);
-closeButton.addEventListener("click", closeModal);
+eventListeners();

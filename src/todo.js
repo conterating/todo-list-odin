@@ -54,3 +54,5 @@ class Todo {
     return this.#isComplete;
   }
 }
+
+export default Todo;
