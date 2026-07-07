@@ -1,11 +1,12 @@
 import ProjectScreenController from "./projectscreeen.js";
 import Project from "./project.js";
+import "./createdefault.js";
 
 const taskDiv = document.querySelector(".tasks");
 const taskAddButton = document.querySelector(".add-button");
 const taskDialog = document.querySelector(".task-dialog");
 const closeButton = document.querySelector(".close-modal");
-const addProject = document.querySelector(".sidebar-button");
+const addProject = document.querySelector(".add-project-button");
 const projectDialog = document.querySelector(".project-dialog");
 const closeProject = document.querySelector(".close-project");
 const submitProject = document.querySelector(".submit-project");
