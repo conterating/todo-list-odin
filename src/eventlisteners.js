@@ -9,6 +9,7 @@ const addProject = document.querySelector(".sidebar-button");
 const projectDialog = document.querySelector(".project-dialog");
 const closeProject = document.querySelector(".close-project");
 const submitProject = document.querySelector(".submit-project");
+const projectForm = document.querySelector(".project-form");
 
 function showTaskModal() {
   taskDialog.showModal();
@@ -45,6 +46,8 @@ function submitProjectController() {
 
   const newProject = createProject(projectInfo);
   renderProject(newProject);
+
+  projectForm.reset();
 }
 
 function eventListeners() {
