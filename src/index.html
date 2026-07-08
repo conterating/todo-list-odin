@@ -47,6 +47,7 @@
                 </div>
                 <div class="task-priority">
                   <label for="priority">Priority: </label>
+                  <label for="low">Low</label>
                   <input
                     type="radio"
                     name="priority"
@@ -54,16 +55,23 @@
                     value="low"
                     required
                   />
-                  <label for="low">Low</label>
+
+                  <label for="medium">Medium</label>
                   <input
                     type="radio"
                     name="priority"
                     id="medium"
                     value="medium"
                   />
-                  <label for="medium">Medium</label>
-                  <input type="radio" name="priority" id="high" value="high" />
+
                   <label for="high">High</label>
+                  <input
+                    type="radio"
+                    name="priority"
+                    id="high"
+                    value="high"
+                    required
+                  />
                 </div>
                 <button type="button" class="close-modal">Close</button>
                 <button type="submit" class="submit-modal">Add Task</button>

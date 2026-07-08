@@ -3,7 +3,7 @@ class Todo {
   #priority;
   #isComplete;
 
-  constructor(title, description, dueDate, priority) {
+  constructor(title = "New Task", description, dueDate, priority) {
     this.title = title;
     this.description = description;
     this.#dueDate = dueDate;

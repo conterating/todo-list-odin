@@ -52,6 +52,7 @@ function submitProjectController() {
 
   const newProject = createProject(projectInfo);
   renderProject(newProject);
+  projectForm.reset();
 }
 
 function getTaskInfo() {
@@ -74,6 +75,7 @@ function addTaskController() {
 
   console.log(task);
   renderTask(task);
+  taskForm.reset();
 }
 
 function eventListeners() {
