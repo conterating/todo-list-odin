@@ -1,8 +1,12 @@
 class Project {
+  static allInstances = [];
+
   constructor(name) {
     this.name = name;
     this.description = "";
     this.projectTodos = [];
+
+    Project.allInstances.push(this);
   }
 
   addTodo(todo) {

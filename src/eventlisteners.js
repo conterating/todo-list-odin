@@ -2,7 +2,6 @@ import ProjectScreenController from "./projectscreeen.js";
 import TaskScreenController from "./taskscreen.js";
 import Project from "./project.js";
 import Todo from "./todo.js";
-import "./createdefault.js";
 
 const taskDiv = document.querySelector(".tasks");
 const taskAddButton = document.querySelector(".add-button");
@@ -55,6 +54,7 @@ function submitProjectController(event) {
   const newProject = createProject(projectInfo);
   renderProject(newProject);
   projectForm.reset();
+  projectDialog.close();
 }
 
 function getTaskInfo() {
@@ -70,10 +70,36 @@ function renderTask(task) {
   TaskScreenController.showTodo(task);
 }
 
+function findProject() {
+  const taskProject = document.querySelector("#task-project").value;
+
+  const targetProj = Project.allInstances.find(
+    (element) => element.name === taskProject,
+  );
+
+  return targetProj;
+}
+
+function addTaskToProject(task) {
+  const taskProject = document.querySelector("#task-project").value;
+  const targetProj = Project.allInstances.find(
+    (element) => element.name === taskProject,
+  );
+
+  if (targetProj) {
+    targetProj.addTodo(task);
+  } else {
+    const newProject = createProject(taskProject);
+    newProject.addTodo(task);
+    renderProject(newProject);
+  }
+}
+
 function addTaskController(event) {
   event.preventDefault();
 
   const task = getTaskInfo();
+  addTaskToProject(task);
 
   if (!task) return;
 

@@ -47,7 +47,7 @@
                 </div>
                 <div class="task-priority">
                   <label for="priority">Priority: </label>
-                  <label for="low">Low</label>
+
                   <input
                     type="radio"
                     name="priority"
@@ -55,22 +55,33 @@
                     value="low"
                     required
                   />
+                  <label for="low">Low</label>
 
-                  <label for="medium">Medium</label>
                   <input
                     type="radio"
                     name="priority"
                     id="medium"
                     value="medium"
                   />
+                  <label for="medium">Medium</label>
 
-                  <label for="high">High</label>
                   <input
                     type="radio"
                     name="priority"
                     id="high"
                     value="high"
                     required
+                  />
+                  <label for="high">High</label>
+                </div>
+                <div>
+                  <label for="task-project">Assign to a Project: </label>
+                  <input
+                    type="text"
+                    name="task-project"
+                    id="task-project"
+                    value="Default"
+                    placeholder="Personal..."
                   />
                 </div>
                 <button type="button" class="close-modal">Close</button>
@@ -79,23 +90,7 @@
             </form>
           </dialog>
         </div>
-        <div class="tasks">
-          <!--
-          <button class="task">
-            <div class="task-text">
-              <h3>Task Title</h3>
-              <h5 class="task-desc">
-                Task Description that is extremly long my my my my. my how logn
-                is this howefhouwhguow w jwbuohwguoehugoerhguiebgije ge gbio
-              </h5>
-            </div>
-            <div class="other-task-info">
-              <p>Due Date</p>
-              <p>Priority Level</p>
-            </div>
-          </button>
-          -->
-        </div>
+        <div class="tasks"></div>
       </div>
     </div>
   </body>
