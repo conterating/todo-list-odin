@@ -1,5 +1,7 @@
 import ProjectScreenController from "./projectscreeen.js";
+import TaskScreenController from "./taskscreen.js";
 import Project from "./project.js";
+import Todo from "./todo.js";
 import "./createdefault.js";
 
 const taskDiv = document.querySelector(".tasks");
@@ -11,12 +13,15 @@ const projectDialog = document.querySelector(".project-dialog");
 const closeProject = document.querySelector(".close-project");
 const submitProject = document.querySelector(".submit-project");
 const projectForm = document.querySelector(".project-form");
+const submitTask = document.querySelector(".submit-modal");
+const taskForm = document.querySelector(".task-form");
 
 function showTaskModal() {
   taskDialog.showModal();
 }
 
 function closeModal() {
+  taskForm.reset();
   taskDialog.close();
 }
 
@@ -43,17 +48,38 @@ function renderProject(project) {
 function submitProjectController() {
   const projectInfo = getProjectInfo();
 
-  if (!title) return;
+  if (!projectInfo) return;
 
   const newProject = createProject(projectInfo);
   renderProject(newProject);
+}
 
-  projectForm.reset();
+function getTaskInfo() {
+  return new Todo(
+    document.querySelector("#title").value,
+    document.querySelector("#description").value,
+    document.querySelector("#due-date").value,
+    document.querySelector('input[name="priority"]:checked').value,
+  );
+}
+
+function renderTask(task) {
+  TaskScreenController.showTodo(task);
+}
+
+function addTaskController() {
+  const task = getTaskInfo();
+
+  if (!task) return;
+
+  console.log(task);
+  renderTask(task);
 }
 
 function eventListeners() {
   taskAddButton.addEventListener("click", showTaskModal);
   closeButton.addEventListener("click", closeModal);
+  submitTask.addEventListener("click", addTaskController);
 
   addProject.addEventListener("click", showProjectModal);
   closeProject.addEventListener("click", closeProjectModal);

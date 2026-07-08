@@ -55,7 +55,7 @@
   border-radius: 12px;
   border: none;
   padding: 10px;
-  max-width: 150px;
+  max-width: 175px;
 }
 
 .add-button {
@@ -73,8 +73,7 @@
   transform: scale(1.1);
 }
 
-.task-dialog,
-.project-modal {
+.task-dialog {
   margin: 0 auto;
   margin-top: 10vw;
 }
@@ -95,4 +94,38 @@
 
 form {
   padding: 30px;
+}
+
+.tasks {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  gap: 6px;
+  flex-grow: 1;
+  width: 80%;
+}
+
+.task {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.task-text {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  max-width: 80%;
+  text-align: left;
+}
+
+.other-task-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.task-desc {
+  font-weight: normal;
 }
