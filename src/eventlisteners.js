@@ -45,7 +45,9 @@ function renderProject(project) {
   ProjectScreenController.showProject(project);
 }
 
-function submitProjectController() {
+function submitProjectController(event) {
+  event.preventDefault();
+
   const projectInfo = getProjectInfo();
 
   if (!projectInfo) return;
@@ -68,7 +70,9 @@ function renderTask(task) {
   TaskScreenController.showTodo(task);
 }
 
-function addTaskController() {
+function addTaskController(event) {
+  event.preventDefault();
+
   const task = getTaskInfo();
 
   if (!task) return;
@@ -76,6 +80,7 @@ function addTaskController() {
   console.log(task);
   renderTask(task);
   taskForm.reset();
+  taskDialog.close();
 }
 
 function eventListeners() {
