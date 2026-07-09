@@ -5,6 +5,9 @@ import eventListeners from "./eventlisteners.js";
 import "./createdefault.js";
 import { renderTask } from "./eventlisteners.js";
 import ProjectScreenController from "./projectscreeen.js";
+import "./pages.js";
+
+const projectButtons = [...document.querySelector(".projects").children];
 
 eventListeners();
 
@@ -12,7 +15,7 @@ function addTaskToProject(task, project) {
   project.addTodo(task);
 }
 
-function getProjectPage(projects, projectName) {
+export function getProjectPage(projects, projectName) {
   return (
     projects.find(
       (element) => element.name.toLowerCase() == projectName.toLowerCase(),
@@ -30,7 +33,7 @@ function renderProjectPage(container, tasks) {
   }
 }
 
-function loadPage(projectName, container) {
+export function loadPage(projectName, container) {
   const page = getProjectPage(Project.allInstances, projectName);
   renderProjectPage(container, page.projectTodos);
 }
