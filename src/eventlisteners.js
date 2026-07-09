@@ -66,7 +66,7 @@ function getTaskInfo() {
   );
 }
 
-function renderTask(task) {
+export function renderTask(task) {
   TaskScreenController.showTodo(task);
 }
 
@@ -81,9 +81,11 @@ function findProject() {
 }
 
 function addTaskToProject(task) {
-  const taskProject = document.querySelector("#task-project").value;
+  const taskProject = document
+    .querySelector("#task-project")
+    .value.toLowerCase();
   const targetProj = Project.allInstances.find(
-    (element) => element.name === taskProject,
+    (element) => element.name.toLowerCase() === taskProject,
   );
 
   if (targetProj) {
@@ -112,7 +114,6 @@ function addTaskController(event) {
 function eventListeners() {
   taskAddButton.addEventListener("click", showTaskModal);
   closeButton.addEventListener("click", closeModal);
-  submitTask.addEventListener("click", addTaskController);
 
   addProject.addEventListener("click", showProjectModal);
   closeProject.addEventListener("click", closeProjectModal);
