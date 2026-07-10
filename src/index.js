@@ -29,7 +29,9 @@ function renderProjectPage(container, tasks) {
   container.innerHTML = "";
 
   for (const task of tasks) {
-    renderTask(task);
+    if (task.isComplete == false) {
+      renderTask(task);
+    }
   }
 }
 
@@ -80,6 +82,53 @@ function createProjectSidebar(buttonExists, project) {
   }
 }
 
+function removeTask(project, task) {
+  project.removeTodo(task);
+}
+
+function findProjectFromTask(projects, taskName) {
+  const project = projects.find((project) => {
+    return project.projectTodos.some((todo) => {
+      return todo.title === taskName;
+    });
+  });
+  return project;
+}
+
+function getTask(project, taskName) {
+  return project.projectTodos.find((element) => {
+    return element.title === taskName;
+  });
+}
+
+const taskContainer = document.querySelector(".tasks");
+taskContainer.addEventListener("click", (event) => {
+  if (event.target.matches("#complete")) {
+    const taskName = event.target.dataset.taskId;
+
+    const project = findProjectFromTask(Project.allInstances, taskName);
+    console.log(project);
+    const task = getTask(project, taskName);
+    task.completeTask();
+    console.log(task);
+
+    //const projectContainer = document.querySelector(".projects");
+
+    loadPage(project.name, taskContainer);
+  }
+});
+
+/*
+checkbox.addEventListener("click", (event) => {
+  console.log("checkbox clicked!!");
+  //const task = event.target.dataset.taskId;
+  //const project = findProjectFromTask(Project.allInstances, task);
+  //const projectContainer = document.querySelector(".projects");
+
+  //removeTask(project, task);
+  //loadPage(project.name, projectContainer);
+});
+*/
 const submitTask = document.querySelector(".submit-modal");
 
 submitTask.addEventListener("click", (event) => {

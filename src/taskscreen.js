@@ -31,6 +31,7 @@ class TodoScreenController {
     checkbox.id = "complete";
     checkbox.name = "complete";
     checkbox.value = "complete";
+    checkbox.dataset.taskId = todo.title;
 
     const taskContainer = document.createElement("div");
 

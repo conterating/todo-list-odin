@@ -1,20 +1,19 @@
 class Todo {
   #dueDate;
   #priority;
-  #isComplete;
 
   constructor(title = "New Task", description, dueDate, priority) {
     this.title = title;
     this.description = description;
     this.#dueDate = dueDate;
     this.#priority = priority;
-    this.#isComplete = false;
+    this.isComplete = false;
   }
   //next step add getters starting with priority
   completeTask() {
-    this.#isComplete = this.#isComplete ? false : true;
-    console.log(this.#isComplete);
-    return this.#isComplete;
+    this.isComplete = this.isComplete ? false : true;
+    console.log(this.isComplete);
+    return this.isComplete;
   }
 
   changePriority(newPriority) {
@@ -48,10 +47,6 @@ class Todo {
     } else {
       this.#priority = value;
     }
-  }
-
-  get isComplete() {
-    return this.#isComplete;
   }
 }
 
