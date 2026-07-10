@@ -8,8 +8,6 @@ projectContainer.addEventListener("click", (event) => {
 
   if (!button) return;
 
-  console.log("clicked a project button!!!");
-
   const tasksContainer = document.querySelector(".tasks");
   loadPage(button.textContent, tasksContainer);
 });

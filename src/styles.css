@@ -110,6 +110,7 @@ form {
   flex-direction: row;
   justify-content: space-between;
   padding: 10px;
+  flex-grow: 1;
 }
 
 .task-text {
@@ -128,4 +129,13 @@ form {
 
 .task-desc {
   font-weight: normal;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.task-checkbox-container {
+  display: flex;
+  gap: 12px;
 }

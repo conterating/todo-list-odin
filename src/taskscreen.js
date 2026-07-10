@@ -26,11 +26,22 @@ class TodoScreenController {
     const priority = document.createElement("p");
     priority.textContent = todo.priority;
 
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.id = "complete";
+    checkbox.name = "complete";
+    checkbox.value = "complete";
+
+    const taskContainer = document.createElement("div");
+
     taskTextDiv.append(taskTitle, taskDesc);
     otherTaskInfo.append(dueDate, priority);
 
     taskButton.append(taskTextDiv, otherTaskInfo);
-    tasksDiv.append(taskButton);
+    taskContainer.append(checkbox, taskButton);
+    taskContainer.classList.add("task-checkbox-container");
+
+    tasksDiv.append(taskContainer);
   }
 }
 
