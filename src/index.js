@@ -8,6 +8,7 @@ import ProjectScreenController from "./projectscreeen.js";
 import "./pages.js";
 
 const projectButtons = [...document.querySelector(".projects").children];
+let editing = false;
 
 eventListeners();
 
@@ -101,7 +102,14 @@ function getTask(project, taskName) {
   });
 }
 
+function isEditing() {
+  editing = true;
+  return editing;
+}
+
 const taskContainer = document.querySelector(".tasks");
+const taskDialog = document.querySelector(".task-dialog");
+
 taskContainer.addEventListener("click", (event) => {
   if (event.target.matches("#complete")) {
     const taskName = event.target.dataset.taskId;
@@ -112,27 +120,52 @@ taskContainer.addEventListener("click", (event) => {
     task.completeTask();
     console.log(task);
 
-    //const projectContainer = document.querySelector(".projects");
-
     loadPage(project.name, taskContainer);
+  } else if (event.target.matches(".task")) {
+    const taskName = event.target.dataset.taskIdentifier;
+    const project = findProjectFromTask(Project.allInstances, taskName);
+    const task = getTask(project, taskName);
+
+    isEditing();
+    taskDialog.showModal();
+
+    document.querySelector("#title").value = task.title;
+    document.querySelector("#description").value = task.description;
+
+    let date = new Date(task.dueDate);
+    date = date.toISOString().split("T")[0];
+    document.querySelector("#due-date").value = date;
+
+    // The entire line uses backticks ``, and the value uses standard ""
+    const radioButton = document.querySelector(
+      `input[name="priority"][value="${task.priority}"]`,
+    );
+
+    if (radioButton) {
+      radioButton.checked = true;
+    }
+
+    //open modal and store current task values ot the form
   }
 });
 
-/*
-checkbox.addEventListener("click", (event) => {
-  console.log("checkbox clicked!!");
-  //const task = event.target.dataset.taskId;
-  //const project = findProjectFromTask(Project.allInstances, task);
-  //const projectContainer = document.querySelector(".projects");
-
-  //removeTask(project, task);
-  //loadPage(project.name, projectContainer);
-});
-*/
 const submitTask = document.querySelector(".submit-modal");
 
 submitTask.addEventListener("click", (event) => {
   event.preventDefault();
+  /*
+  if (editing == true) {
+    //get current information
+    const title = document.querySelector("#task-title").value;
+    const project = findProjectFromTask(Project.allInstances, title);
+
+    //open the modal
+    //store the current values as the values
+    //store new values
+    //use editTask
+    //update DOM
+  }
+  */
   const taskForm = document.querySelector(".task-form");
   const taskDialog = document.querySelector(".task-dialog");
 

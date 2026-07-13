@@ -2,7 +2,7 @@ class Todo {
   #dueDate;
   #priority;
 
-  constructor(title = "New Task", description, dueDate, priority) {
+  constructor(title, description, dueDate, priority) {
     this.title = title;
     this.description = description;
     this.#dueDate = dueDate;
@@ -18,6 +18,13 @@ class Todo {
 
   changePriority(newPriority) {
     this.#priority = newPriority;
+  }
+
+  editTask(title, description, dueDate, priority) {
+    this.title = title;
+    this.description = description;
+    this.dueDate = dueDate;
+    this.priority = priority;
   }
 
   get dueDate() {

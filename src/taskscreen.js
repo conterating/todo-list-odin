@@ -6,6 +6,7 @@ class TodoScreenController {
   static showTodo(todo) {
     const taskButton = document.createElement("button");
     taskButton.classList.add("task");
+    taskButton.dataset.taskIdentifier = todo.title;
 
     const taskTextDiv = document.createElement("div");
     taskTextDiv.classList.add("task-text");
