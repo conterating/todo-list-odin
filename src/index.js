@@ -9,6 +9,7 @@ import "./pages.js";
 
 const projectButtons = [...document.querySelector(".projects").children];
 let editing = false;
+let editableTaskName;
 
 eventListeners();
 
@@ -146,6 +147,7 @@ taskContainer.addEventListener("click", (event) => {
     }
 
     //open modal and store current task values ot the form
+    editableTaskName = taskName;
   }
 });
 
@@ -153,11 +155,13 @@ const submitTask = document.querySelector(".submit-modal");
 
 submitTask.addEventListener("click", (event) => {
   event.preventDefault();
-  /*
+
   if (editing == true) {
     //get current information
-    const title = document.querySelector("#task-title").value;
-    const project = findProjectFromTask(Project.allInstances, title);
+    const project = findProjectFromTask(Project.allInstances, editableTaskName);
+    const task = getTask(project, editableTaskName);
+
+    task.completeTask();
 
     //open the modal
     //store the current values as the values
@@ -165,7 +169,7 @@ submitTask.addEventListener("click", (event) => {
     //use editTask
     //update DOM
   }
-  */
+
   const taskForm = document.querySelector(".task-form");
   const taskDialog = document.querySelector(".task-dialog");
 
